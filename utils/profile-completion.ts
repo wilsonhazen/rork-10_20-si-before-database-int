@@ -1,4 +1,4 @@
-import type { InfluencerProfile, SponsorProfile, AgentProfile } from '@/types';
+import type { InfluencerProfile, SponsorProfile, AgentProfile, User } from '@/types';
 
 export interface ProfileCompletionItem {
   label: string;
@@ -161,7 +161,7 @@ export function calculateAgentProfileCompletion(agent: AgentProfile): ProfileCom
 }
 
 export function calculateProfileCompletion(
-  user: InfluencerProfile | SponsorProfile | AgentProfile
+  user: InfluencerProfile | SponsorProfile | AgentProfile | User
 ): ProfileCompletion {
   switch (user.role) {
     case 'influencer':

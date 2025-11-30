@@ -129,7 +129,7 @@ export default function StripeVerificationScreen() {
           [
             {
               text: 'Start Browsing Deals',
-              onPress: () => router.replace('/(tabs)/discover'),
+              onPress: () => router.replace('/(tabs)/search'),
             },
           ]
         );

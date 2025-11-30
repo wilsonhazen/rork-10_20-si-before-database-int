@@ -105,7 +105,7 @@ export default function BrandHubScreen() {
           <Text style={styles.emptySubtext}>Browse gigs and save ones you&apos;re interested in</Text>
           <TouchableOpacity 
             style={styles.ctaButton}
-            onPress={() => router.push('/discover')}
+            onPress={() => router.push('/(tabs)/search')}
           >
             <Text style={styles.ctaButtonText}>Browse Gigs</Text>
           </TouchableOpacity>

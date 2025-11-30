@@ -116,7 +116,7 @@ export default function ViewProfileScreen() {
     );
 
     if (existingConv) {
-      router.push(`/messages?conversationId=${existingConv.id}`);
+      router.push(`/conversation?conversationId=${existingConv.id}` as any);
     } else {
       const newConv = {
         id: `conv_${Date.now()}`,
@@ -126,7 +126,7 @@ export default function ViewProfileScreen() {
         unreadCount: 0,
       };
       addConversation(newConv);
-      router.push(`/messages?conversationId=${newConv.id}`);
+      router.push(`/conversation?conversationId=${newConv.id}` as any);
     }
   };
 

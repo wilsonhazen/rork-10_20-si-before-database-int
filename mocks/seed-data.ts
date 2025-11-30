@@ -182,6 +182,10 @@ export const mockGigs: Gig[] = [
     title: 'Instagram Campaign for Fashion Brand',
     description: 'Looking for fashion influencers to promote our new summer collection',
     price: 5000,
+    budget: {
+      min: 4000,
+      max: 6000,
+    },
     categories: [CONTENT_CATEGORIES.FASHION],
     influencerTypes: [INFLUENCER_TYPES.FASHION],
     location: LOCATIONS.US.NEW_YORK,
@@ -199,6 +203,10 @@ export const mockGigs: Gig[] = [
     title: 'Tech Product Review Series',
     description: 'Need tech reviewers for our new gadget launch',
     price: 3500,
+    budget: {
+      min: 3000,
+      max: 4000,
+    },
     categories: [CONTENT_CATEGORIES.TECH],
     influencerTypes: [INFLUENCER_TYPES.TECH],
     location: LOCATIONS.US.SAN_FRANCISCO,
@@ -215,6 +223,10 @@ export const mockGigs: Gig[] = [
     title: 'Basketball Athlete Brand Ambassador',
     description: 'Seeking professional basketball players for our new shoe line campaign',
     price: 35000,
+    budget: {
+      min: 30000,
+      max: 40000,
+    },
     categories: [ATHLETE_SPORTS.BASKETBALL],
     influencerTypes: [INFLUENCER_TYPES.ATHLETE],
     location: LOCATIONS.US.MIAMI,

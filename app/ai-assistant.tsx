@@ -15,14 +15,13 @@ export default function AIAssistantScreen() {
   const [input, setInput] = useState('');
   const scrollViewRef = useRef<ScrollView>(null);
 
-  const { messages, error, sendMessage, isLoading } = useRorkAgent({
+  const { messages, error, sendMessage } = useRorkAgent({
     tools: {
       navigateToScreen: createRorkTool({
         description: "Navigate to a specific screen in the app when user wants to go somewhere",
         zodSchema: z.object({
           screen: z.enum([
             'ai-matching',
-            'discover',
             'deals',
             'profile',
             'manage-gigs',
@@ -37,7 +36,8 @@ export default function AIAssistantScreen() {
           ]).describe('The screen to navigate to'),
         }),
         execute(input) {
-          router.push(`/${input.screen}`);
+          router.push(`/${input.screen}` as any);
+          return `Navigating to ${input.screen}`;
         },
       }),
       suggestGigs: createRorkTool({
@@ -48,6 +48,7 @@ export default function AIAssistantScreen() {
         }),
         execute(input) {
           console.log('Suggesting gigs with filters:', input);
+          return 'Analyzing available gigs...';
         },
       }),
       analyzeProfile: createRorkTool({
@@ -57,6 +58,7 @@ export default function AIAssistantScreen() {
         }),
         execute(input) {
           console.log('Analyzing profile for user:', input.userId);
+          return 'Analyzing profile...';
         },
       }),
     },
@@ -175,7 +177,7 @@ export default function AIAssistantScreen() {
           </View>
         ))}
 
-        {isLoading && (
+        {messages.length > 0 && messages[messages.length - 1].role === 'assistant' && messages[messages.length - 1].parts.some(p => p.type === 'tool' && p.state === 'input-streaming') && (
           <View style={styles.aiMessage}>
             <View style={styles.aiMessageBubble}>
               <View style={styles.typingIndicator}>
@@ -228,7 +230,7 @@ export default function AIAssistantScreen() {
         <TouchableOpacity
           style={[styles.sendButton, !input.trim() && styles.sendButtonDisabled]}
           onPress={handleSend}
-          disabled={!input.trim() || isLoading}
+          disabled={!input.trim()}
         >
           <LinearGradient
             colors={input.trim() ? [Colors.primary, Colors.secondary] : [Colors.darkCard, Colors.darkCard]}

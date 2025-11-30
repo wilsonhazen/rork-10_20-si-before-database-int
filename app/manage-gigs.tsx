@@ -33,6 +33,7 @@ export default function ManageGigsScreen() {
   const handleCreateGig = async () => {
     if (!user || !formData.title || !formData.description) return;
 
+    const price = parseInt(formData.price) || 0;
     const newGig: Gig = {
       id: Date.now().toString(),
       sponsorId: user.id,
@@ -40,7 +41,11 @@ export default function ManageGigsScreen() {
       sponsorAvatar: user.avatar,
       title: formData.title,
       description: formData.description,
-      price: parseInt(formData.price) || 0,
+      price: price,
+      budget: {
+        min: price,
+        max: price,
+      },
       categories: formData.categories,
       influencerTypes: formData.influencerTypes,
       athleteSports: formData.athleteSports,

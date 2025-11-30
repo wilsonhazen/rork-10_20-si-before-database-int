@@ -170,7 +170,7 @@ export default function NegotiationsScreen() {
             {user?.role === 'sponsor' && filter === 'all' && (
               <TouchableOpacity 
                 style={styles.emptyButton}
-                onPress={() => router.push('/(tabs)/discover')}
+                onPress={() => router.push('/(tabs)/search')}
               >
                 <Text style={styles.emptyButtonText}>Browse Influencers</Text>
               </TouchableOpacity>

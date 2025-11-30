@@ -42,8 +42,8 @@ export default function ProfileScreen() {
   const [showRoleModal, setShowRoleModal] = useState(false);
 
   const profileCompletion = useMemo(() => {
-    if (!user) return null;
-    return calculateProfileCompletion(user);
+    if (!user || user.role === 'admin') return null;
+    return calculateProfileCompletion(user as any);
   }, [user]);
 
   const handleLogout = () => {
